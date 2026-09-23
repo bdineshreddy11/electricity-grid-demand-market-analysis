@@ -1,0 +1,38 @@
+state,demand_mw,peak_mw,frequency_hz,timestamp,source,source_type,source_kind
+Andaman and Nicobar Islands,53.101,53.101,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Arunachal Pradesh,467.736,467.736,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Assam,2007.726,2007.726,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Bihar,7017.028,7017.028,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Chandigarh,250.231,250.231,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Chhattisgarh,6959.897,6959.897,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Dadra and Nagar Haveli and Daman and Diu,891.261,891.261,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Goa,484.909,484.909,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Haryana,10567.081,10567.081,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Jammu and Kashmir,2042.378,2042.378,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Jharkhand,2562.373,2562.373,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Ladakh,17.188,17.188,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Lakshadweep,10.615,10.615,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Madhya Pradesh,11904.457,11904.457,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Maharashtra,26582.926,26582.926,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Manipur,173.284,173.284,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Meghalaya,266.047,266.047,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Mizoram,110.605,110.605,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Nagaland,132.976,132.976,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Odisha,6085.684,6085.684,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Puducherry,339.682,339.682,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Sikkim,360.757,360.757,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Tripura,352.042,352.042,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Uttar Pradesh,23095.785,23095.785,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+Uttarakhand,2372.012,2372.012,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled
+All India,230444.0,252492.0,50.0077,2026-09-16 12:35:33+00:00,npp_merit_demand,official,modeled
+Andhra Pradesh,11103.948,11103.948,50.0,2026-09-16 12:35:33+00:00,modeled_concurrent_v1,modeled,modeled
+Kerala,5388.453,5388.453,50.0,2026-09-16 12:35:33+00:00,modeled_concurrent_v1,modeled,modeled
+Telangana,15670.688,15670.688,50.0,2026-09-16 12:35:33+00:00,modeled_concurrent_v1,modeled,modeled
+Delhi,6287.214,6287.214,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled
+Gujarat,19610.451,19610.451,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled
+Himachal Pradesh,1034.047,1034.047,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled
+Karnataka,11745.246,11745.246,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled
+Punjab,12334.46,12334.46,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled
+Rajasthan,14941.989,14941.989,50.0,2026-09-16 15:15:00+00:00,modeled_ml_forecast_v1,modeled,modeled
+Tamil Nadu,18653.428,18653.428,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled
+West Bengal,10591.711,10591.711,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled

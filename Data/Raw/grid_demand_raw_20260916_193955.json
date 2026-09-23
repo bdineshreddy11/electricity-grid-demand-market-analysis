@@ -1,0 +1,504 @@
+{
+    "data": {
+        "items": [
+            {
+                "state": "All India",
+                "demand_mw": 230444.0,
+                "peak_mw": "252492.0",
+                "frequency_hz": "50.0077",
+                "timestamp": "2026-09-16T12:35:33+00:00",
+                "source": "npp_merit_demand",
+                "source_type": "official",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Andaman and Nicobar Islands",
+                "demand_mw": 53.101,
+                "peak_mw": "53.101",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Andhra Pradesh",
+                "demand_mw": 11103.948,
+                "peak_mw": "11103.948",
+                "frequency_hz": "50.000",
+                "timestamp": "2026-09-16T12:35:33+00:00",
+                "source": "modeled_concurrent_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Arunachal Pradesh",
+                "demand_mw": 467.736,
+                "peak_mw": "467.736",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Assam",
+                "demand_mw": 2007.726,
+                "peak_mw": "2007.726",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Bihar",
+                "demand_mw": 7017.028,
+                "peak_mw": "7017.028",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Chandigarh",
+                "demand_mw": 250.231,
+                "peak_mw": "250.231",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Chhattisgarh",
+                "demand_mw": 6959.897,
+                "peak_mw": "6959.897",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Dadar & Nagar Haveli",
+                "demand_mw": null,
+                "peak_mw": null,
+                "frequency_hz": "50.0077",
+                "timestamp": "",
+                "source": null,
+                "source_type": null,
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Dadra and Nagar Haveli and Daman and Diu",
+                "demand_mw": 891.261,
+                "peak_mw": "891.261",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Daman & Diu",
+                "demand_mw": null,
+                "peak_mw": null,
+                "frequency_hz": "50.0077",
+                "timestamp": "",
+                "source": null,
+                "source_type": null,
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Delhi",
+                "demand_mw": 6287.214,
+                "peak_mw": "6287.214",
+                "frequency_hz": "50.000",
+                "timestamp": "2026-09-16T15:15:00+00:00",
+                "source": "modeled_ml_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "DVC",
+                "demand_mw": null,
+                "peak_mw": null,
+                "frequency_hz": "50.0077",
+                "timestamp": "",
+                "source": null,
+                "source_type": null,
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Eastern",
+                "demand_mw": null,
+                "peak_mw": null,
+                "frequency_hz": "50.0077",
+                "timestamp": "",
+                "source": null,
+                "source_type": null,
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Goa",
+                "demand_mw": 484.909,
+                "peak_mw": "484.909",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Gujarat",
+                "demand_mw": 19610.451,
+                "peak_mw": "19610.451",
+                "frequency_hz": "50.000",
+                "timestamp": "2026-09-16T15:15:00+00:00",
+                "source": "modeled_ml_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Haryana",
+                "demand_mw": 10567.081,
+                "peak_mw": "10567.081",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Himachal Pradesh",
+                "demand_mw": 1034.047,
+                "peak_mw": "1034.047",
+                "frequency_hz": "50.000",
+                "timestamp": "2026-09-16T15:15:00+00:00",
+                "source": "modeled_ml_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Jammu and Kashmir",
+                "demand_mw": 2042.378,
+                "peak_mw": "2042.378",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Jharkhand",
+                "demand_mw": 2562.373,
+                "peak_mw": "2562.373",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Karnataka",
+                "demand_mw": 11745.246,
+                "peak_mw": "11745.246",
+                "frequency_hz": "50.000",
+                "timestamp": "2026-09-16T15:15:00+00:00",
+                "source": "modeled_ml_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Kerala",
+                "demand_mw": 5388.453,
+                "peak_mw": "5388.453",
+                "frequency_hz": "50.000",
+                "timestamp": "2026-09-16T12:35:33+00:00",
+                "source": "modeled_concurrent_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Ladakh",
+                "demand_mw": 17.188,
+                "peak_mw": "17.188",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Lakshadweep",
+                "demand_mw": 10.615,
+                "peak_mw": "10.615",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Madhya Pradesh",
+                "demand_mw": 11904.457,
+                "peak_mw": "11904.457",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Maharashtra",
+                "demand_mw": 26582.926,
+                "peak_mw": "26582.926",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Manipur",
+                "demand_mw": 173.284,
+                "peak_mw": "173.284",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Meghalaya",
+                "demand_mw": 266.047,
+                "peak_mw": "266.047",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Mizoram",
+                "demand_mw": 110.605,
+                "peak_mw": "110.605",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Nagaland",
+                "demand_mw": 132.976,
+                "peak_mw": "132.976",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "North Eastern",
+                "demand_mw": null,
+                "peak_mw": null,
+                "frequency_hz": "50.0077",
+                "timestamp": "",
+                "source": null,
+                "source_type": null,
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Northern",
+                "demand_mw": null,
+                "peak_mw": null,
+                "frequency_hz": "50.0077",
+                "timestamp": "",
+                "source": null,
+                "source_type": null,
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Odisha",
+                "demand_mw": 6085.684,
+                "peak_mw": "6085.684",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Puducherry",
+                "demand_mw": 339.682,
+                "peak_mw": "339.682",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Punjab",
+                "demand_mw": 12334.46,
+                "peak_mw": "12334.460",
+                "frequency_hz": "50.000",
+                "timestamp": "2026-09-16T15:15:00+00:00",
+                "source": "modeled_ml_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Rajasthan",
+                "demand_mw": 14941.989,
+                "peak_mw": "14941.989",
+                "frequency_hz": "50.000",
+                "timestamp": "2026-09-16T15:15:00+00:00",
+                "source": "modeled_ml_forecast_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Sikkim",
+                "demand_mw": 360.757,
+                "peak_mw": "360.757",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Southern",
+                "demand_mw": null,
+                "peak_mw": null,
+                "frequency_hz": "50.0077",
+                "timestamp": "",
+                "source": null,
+                "source_type": null,
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Tamil Nadu",
+                "demand_mw": 18653.428,
+                "peak_mw": "18653.428",
+                "frequency_hz": "50.000",
+                "timestamp": "2026-09-16T15:15:00+00:00",
+                "source": "modeled_ml_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Telangana",
+                "demand_mw": 15670.688,
+                "peak_mw": "15670.688",
+                "frequency_hz": "50.000",
+                "timestamp": "2026-09-16T12:35:33+00:00",
+                "source": "modeled_concurrent_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Tripura",
+                "demand_mw": 352.042,
+                "peak_mw": "352.042",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "UTs of J&K and Ladakh",
+                "demand_mw": null,
+                "peak_mw": null,
+                "frequency_hz": "50.0077",
+                "timestamp": "",
+                "source": null,
+                "source_type": null,
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Uttarakhand",
+                "demand_mw": 2372.012,
+                "peak_mw": "2372.012",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Uttar Pradesh",
+                "demand_mw": 23095.785,
+                "peak_mw": "23095.785",
+                "frequency_hz": "49.980",
+                "timestamp": "2026-09-16T11:30:00+00:00",
+                "source": "modeled_state_demand_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "West Bengal",
+                "demand_mw": 10591.711,
+                "peak_mw": "10591.711",
+                "frequency_hz": "50.000",
+                "timestamp": "2026-09-16T15:15:00+00:00",
+                "source": "modeled_ml_v1",
+                "source_type": "modeled",
+                "source_kind": "modeled"
+            },
+            {
+                "state": "Western",
+                "demand_mw": null,
+                "peak_mw": null,
+                "frequency_hz": "50.0077",
+                "timestamp": "",
+                "source": null,
+                "source_type": null,
+                "source_kind": "modeled"
+            }
+        ],
+        "as_of": "2026-09-17T18:15:00+00:00",
+        "all_india": {
+            "demand_mw": 230444.0,
+            "peak_mw": "252492.0",
+            "frequency_hz": "50.0077",
+            "timestamp": "2026-09-16T12:35:33+00:00"
+        },
+        "iex_dam": {
+            "mcp_rs_mwh": "10000.000",
+            "timestamp": "2026-09-17T18:15:00+00:00"
+        },
+        "carbon_intensity": {
+            "value_gco2_kwh": 830.67,
+            "intensity_class": "red"
+        },
+        "coverage": {
+            "live_states": 36,
+            "total_states": 36
+        }
+    },
+    "meta": {
+        "timestamp": "2026-09-16T14:09:55.978352+00:00",
+        "plan": "sandbox",
+        "key_id_hash": "kdu-shbx-zms3",
+        "quota": {
+            "daily_limit": 100,
+            "daily_remaining": 97,
+            "minute_limit": 3,
+            "minute_remaining": 3
+        },
+        "freshness_lag_minutes": 0,
+        "data_window": {
+            "history_days": 30,
+            "forecast_days": 7,
+            "freshness_lag_minutes": 0
+        },
+        "count": 46,
+        "shape": "hero_v2"
+    }
+}

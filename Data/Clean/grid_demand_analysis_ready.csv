@@ -1,0 +1,38 @@
+state,demand_mw,peak_mw,frequency_hz,timestamp,source,source_type,source_kind,date,time,hour,day_of_week,demand_vs_peak_pct,demand_status
+Andaman and Nicobar Islands,53.101,53.101,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Arunachal Pradesh,467.736,467.736,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Assam,2007.726,2007.726,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Bihar,7017.028,7017.028,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Chandigarh,250.231,250.231,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Chhattisgarh,6959.897,6959.897,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Dadra and Nagar Haveli and Daman and Diu,891.261,891.261,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Goa,484.909,484.909,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Haryana,10567.081,10567.081,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Jammu and Kashmir,2042.378,2042.378,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Jharkhand,2562.373,2562.373,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Ladakh,17.188,17.188,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Lakshadweep,10.615,10.615,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Madhya Pradesh,11904.457,11904.457,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Maharashtra,26582.926,26582.926,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Manipur,173.284,173.284,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Meghalaya,266.047,266.047,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Mizoram,110.605,110.605,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Nagaland,132.976,132.976,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Odisha,6085.684,6085.684,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Puducherry,339.682,339.682,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Sikkim,360.757,360.757,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Tripura,352.042,352.042,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Uttar Pradesh,23095.785,23095.785,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+Uttarakhand,2372.012,2372.012,49.98,2026-09-16 11:30:00+00:00,modeled_state_demand_v1,modeled,modeled,2026-09-16,11:30:00,11,Wednesday,100.0,Very High
+All India,230444.0,252492.0,50.0077,2026-09-16 12:35:33+00:00,npp_merit_demand,official,modeled,2026-09-16,12:35:33,12,Wednesday,91.26784214945424,High
+Andhra Pradesh,11103.948,11103.948,50.0,2026-09-16 12:35:33+00:00,modeled_concurrent_v1,modeled,modeled,2026-09-16,12:35:33,12,Wednesday,100.0,Very High
+Kerala,5388.453,5388.453,50.0,2026-09-16 12:35:33+00:00,modeled_concurrent_v1,modeled,modeled,2026-09-16,12:35:33,12,Wednesday,100.0,Very High
+Telangana,15670.688,15670.688,50.0,2026-09-16 12:35:33+00:00,modeled_concurrent_v1,modeled,modeled,2026-09-16,12:35:33,12,Wednesday,100.0,Very High
+Delhi,6287.214,6287.214,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled,2026-09-16,15:15:00,15,Wednesday,100.0,Very High
+Gujarat,19610.451,19610.451,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled,2026-09-16,15:15:00,15,Wednesday,100.0,Very High
+Himachal Pradesh,1034.047,1034.047,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled,2026-09-16,15:15:00,15,Wednesday,100.0,Very High
+Karnataka,11745.246,11745.246,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled,2026-09-16,15:15:00,15,Wednesday,100.0,Very High
+Punjab,12334.46,12334.46,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled,2026-09-16,15:15:00,15,Wednesday,100.0,Very High
+Rajasthan,14941.989,14941.989,50.0,2026-09-16 15:15:00+00:00,modeled_ml_forecast_v1,modeled,modeled,2026-09-16,15:15:00,15,Wednesday,100.0,Very High
+Tamil Nadu,18653.428,18653.428,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled,2026-09-16,15:15:00,15,Wednesday,100.0,Very High
+West Bengal,10591.711,10591.711,50.0,2026-09-16 15:15:00+00:00,modeled_ml_v1,modeled,modeled,2026-09-16,15:15:00,15,Wednesday,100.0,Very High

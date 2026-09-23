@@ -2,7 +2,8 @@ name: Electricity Data Collection
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "7,22,37,52 * * * *"  
+      
 
   workflow_dispatch:
 

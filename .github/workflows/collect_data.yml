@@ -1,4 +1,4 @@
-name: Collect Electricity Data
+name: Electricity Data Collection
 
 on:
   schedule:

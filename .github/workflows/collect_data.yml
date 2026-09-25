@@ -2,16 +2,16 @@ name: Electricity Data Collection
 
 on:
   schedule:
-     - cron: "*/30 * * * *"
-      
+    - cron: "*/30 * * * *"
 
   workflow_dispatch:
 
 jobs:
-  collect-data:
+  collect-and-clean:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -24,9 +24,15 @@ jobs:
         run: |
           pip install requests pymongo python-dotenv
 
-      - name: Run data collector
+      - name: Collect raw electricity data
         env:
           ENERGY_API_KEY: ${{ secrets.ENERGY_API_KEY }}
           MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
           python python/collect_demand.py
+
+      - name: Clean and store electricity data
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+        run: |
+          python python/clean_demand.py

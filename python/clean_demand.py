@@ -1,17 +1,16 @@
-
 import os
+import sys
 from math import isfinite
-
 from dotenv import load_dotenv
 from pymongo import MongoClient, InsertOne
-from pymongo.errors import PyMongoError
+from pymongo.errors import PyMongoError, BulkWriteError
 
 load_dotenv()
 
 MONGO_URI = os.getenv("MONGO_URI")
 
 if not MONGO_URI:
-    raise ValueError("MONGO_URI is not set")
+    raise ValueError("MONGO_URI is not set in environment or .env")
 
 BATCH_SIZE = 1000
 
@@ -20,6 +19,42 @@ client = MongoClient(
     serverSelectionTimeoutMS=10000
 )
 
+def to_number(value):
+    try:
+        if value is None or value == "":
+            return None
+        number = float(value)
+        return number if isfinite(number) else None
+    except (ValueError, TypeError):
+        return None
+
+def write_batch(collection, operations):
+    """
+    Executes bulk write safely by ignoring duplicate key conflicts (code 11000)
+    and returning (inserted_count, skipped_count).
+    """
+    if not operations:
+        return 0, 0
+    try:
+        res = collection.bulk_write(operations, ordered=False)
+        inserted = res.inserted_count
+        skipped = len(operations) - inserted
+        return inserted, skipped
+    except BulkWriteError as bwe:
+        inserted = bwe.details.get("nInserted", 0)
+        write_errors = bwe.details.get("writeErrors", [])
+        
+        # Count write errors caused by existing unique index duplicates
+        dup_errors = sum(1 for err in write_errors if err.get("code") == 11000)
+        skipped = dup_errors
+        
+        # Re-raise if there are fatal errors other than duplicate key violations
+        other_errors = [err for err in write_errors if err.get("code") != 11000]
+        if other_errors:
+            raise bwe
+            
+        return inserted, skipped
+
 try:
     client.admin.command("ping")
 
@@ -27,7 +62,7 @@ try:
     raw_collection = db["electricity_data"]
     clean_collection = db["electricity_clean"]
 
-    # Create a unique index to prevent duplicate clean records.
+    # Create unique compound index to prevent duplicate records
     clean_collection.create_index(
         [
             ("collected_at", 1),
@@ -35,18 +70,6 @@ try:
         ],
         unique=True
     )
-
-    def to_number(value):
-        try:
-            if value is None or value == "":
-                return None
-
-            number = float(value)
-
-            return number if isfinite(number) else None
-
-        except (ValueError, TypeError):
-            return None
 
     raw_documents = 0
     total_state_records = 0
@@ -93,49 +116,32 @@ try:
                 "state": state.get("state"),
                 "demand_mw": demand,
                 "peak_mw": to_number(state.get("peak_mw")),
-                "frequency_hz": to_number(
-                    state.get("frequency_hz")
-                ),
+                "frequency_hz": to_number(state.get("frequency_hz")),
                 "source": state.get("source"),
                 "source_type": state.get("source_type"),
                 "source_kind": state.get("source_kind")
             }
 
-            # Skip records already present in the clean collection.
-            operations.append(
-                InsertOne(clean_record)
-            )
+            operations.append(InsertOne(clean_record))
 
             if len(operations) >= BATCH_SIZE:
-                result = clean_collection.bulk_write(
-                    operations,
-                    ordered=False
-                )
-
-                clean_records_inserted += result.inserted_count
-                duplicates_skipped += (
-                    len(operations) - result.inserted_count
-                )
-
+                ins, skp = write_batch(clean_collection, operations)
+                clean_records_inserted += ins
+                duplicates_skipped += skp
                 operations.clear()
 
         if raw_documents % 500 == 0:
             print(f"Processed {raw_documents} raw documents...")
 
-    # Insert the remaining records.
+    # Flush remaining operations
     if operations:
-        result = clean_collection.bulk_write(
-            operations,
-            ordered=False
-        )
-
-        clean_records_inserted += result.inserted_count
-        duplicates_skipped += (
-            len(operations) - result.inserted_count
-        )
+        ins, skp = write_batch(clean_collection, operations)
+        clean_records_inserted += ins
+        duplicates_skipped += skp
+        operations.clear()
 
     print("\n========== DATA CLEANING REPORT ==========")
-    print("Raw documents read      :", raw_documents)
+    print("Raw documents read       :", raw_documents)
     print("State records checked   :", total_state_records)
     print("Missing demand removed  :", missing_demand)
     print("Invalid demand removed  :", invalid_demand)
@@ -148,8 +154,8 @@ try:
     print("==========================================")
 
 except PyMongoError as error:
-    print("MongoDB operation failed:", error)
-    raise
+    print(f"MongoDB operation failed: {error}", file=sys.stderr)
+    sys.exit(1)
 
 finally:
     client.close()

@@ -1,4 +1,5 @@
 import os
+import sys
 from datetime import datetime, timezone
 
 import requests
@@ -18,10 +19,10 @@ API_URL = "https://api.energymap.in/developer/v1/grid/demand/latest"
 
 # Check required environment variables
 if not API_KEY:
-    raise ValueError("ENERGY_API_KEY is not set in .env")
+    raise ValueError("ENERGY_API_KEY is not set in environment or .env")
 
 if not MONGO_URI:
-    raise ValueError("MONGO_URI is not set in .env")
+    raise ValueError("MONGO_URI is not set in environment or .env")
 
 
 def collect_data():
@@ -41,21 +42,19 @@ def collect_data():
             headers=headers,
             timeout=30
         )
-
         response.raise_for_status()
 
     except requests.RequestException as e:
-        print("API request failed:", e)
-        return
+        print(f"API request failed: {e}", file=sys.stderr)
+        sys.exit(1)
 
     api_response = response.json()
 
     if "data" not in api_response:
-        print("Invalid API response.")
-        return
+        print("Invalid API response: 'data' key missing.", file=sys.stderr)
+        sys.exit(1)
 
     data = api_response["data"]
-
 
     # -------------------------
     # 2. Connect to MongoDB
@@ -67,26 +66,20 @@ def collect_data():
             MONGO_URI,
             serverSelectionTimeoutMS=10000
         )
-
         client.admin.command("ping")
 
         db = client["electricity_grid"]
         collection = db["electricity_data"]
 
     except PyMongoError as e:
-        print("MongoDB connection failed:", e)
-        return
-
+        print(f"MongoDB connection failed: {e}", file=sys.stderr)
+        sys.exit(1)
 
     # -------------------------
-    # 3. Collection timestamp
+    # 3. Collection timestamp & document
     # -------------------------
     collected_at = datetime.now(timezone.utc)
 
-
-    # -------------------------
-    # 4. Create document
-    # -------------------------
     document = {
         "collected_at": collected_at,
         "api_as_of": data.get("as_of"),
@@ -98,9 +91,8 @@ def collect_data():
         "meta": api_response.get("meta")
     }
 
-
     # -------------------------
-    # 5. Insert snapshot
+    # 4. Insert snapshot
     # -------------------------
     try:
         result = collection.insert_one(document)
@@ -109,20 +101,18 @@ def collect_data():
         print("Collected at:", collected_at)
         print(
             "All India demand:",
-            data.get("all_india", {}).get("demand_mw"),
+            (data.get("all_india") or {}).get("demand_mw"),
             "MW"
         )
         print("MongoDB document ID:", result.inserted_id)
 
     except PyMongoError as e:
-        print("MongoDB insert failed:", e)
+        print(f"MongoDB insert failed: {e}", file=sys.stderr)
+        sys.exit(1)
 
     finally:
         client.close()
 
 
-# -------------------------
-# Run collector
-# -------------------------
 if __name__ == "__main__":
     collect_data()

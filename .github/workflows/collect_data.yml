@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests pymongo python-dotenv
+          pip install requests pymongo python-dotenv pandas numpy
 
       - name: Collect raw electricity data
         env:
@@ -36,3 +36,9 @@ jobs:
           MONGO_URI: ${{ secrets.MONGO_URI }}
         run: |
           python python/clean_demand.py
+
+      - name: Normalize electricity data in MongoDB
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+        run: |
+          python python/normalizer_mongodb.py

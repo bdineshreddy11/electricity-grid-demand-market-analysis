@@ -23,7 +23,8 @@ DATABASE_NAME = "electricity_grid"
 SOURCE_COLLECTION = "electricity_clean"
 TARGET_COLLECTION = "electricity_normalized"
 
-BATCH_SIZE = 2000  # Number of operations sent per network request
+FETCH_BATCH_SIZE = 500   # Read documents per batch via _id pagination
+WRITE_BATCH_SIZE = 1000  # Number of operations sent to MongoDB per write
 
 
 # --------------------------------------------------
@@ -97,16 +98,6 @@ def to_datetime(value):
 # 3. PREPARE A NORMALIZED RECORD
 # --------------------------------------------------
 
-OPTIONAL_METADATA_FIELDS = [
-    "api_as_of",
-    "all_india",
-    "iex_dam",
-    "carbon_intensity",
-    "coverage",
-    "meta"
-]
-
-
 def normalize_record(state_record, parent_document=None):
     parent_document = parent_document or {}
 
@@ -119,8 +110,6 @@ def normalize_record(state_record, parent_document=None):
     collected_at = (
         state_record.get("collected_at")
         or parent_document.get("collected_at")
-        or state_record.get("timestamp")
-        or parent_document.get("timestamp")
     )
 
     normalized_collected_at = to_datetime(collected_at)
@@ -137,6 +126,18 @@ def normalize_record(state_record, parent_document=None):
         or "unknown"
     )
 
+    # 1. State timestamp
+    # 2. Parent observation timestamp (api_as_of / timestamp)
+    # 3. Fallback to collected_at if no specific observation timestamp exists
+    raw_timestamp = (
+        state_record.get("timestamp")
+        or parent_document.get("api_as_of")
+        or parent_document.get("timestamp")
+        or collected_at
+    )
+
+    normalized_timestamp = to_datetime(raw_timestamp)
+
     normalized = {
         "collected_at": normalized_collected_at,
         "state": state_name,
@@ -145,14 +146,9 @@ def normalize_record(state_record, parent_document=None):
         "frequency_hz": to_number(state_record.get("frequency_hz")),
         "source": str(source).strip(),
         "source_type": state_record.get("source_type"),
-        "source_kind": state_record.get("source_kind")
+        "source_kind": state_record.get("source_kind"),
+        "timestamp": normalized_timestamp
     }
-
-    api_timestamp = state_record.get("timestamp")
-    if api_timestamp:
-        normalized_api_time = to_datetime(api_timestamp)
-        if normalized_api_time:
-            normalized["timestamp"] = normalized_api_time
 
     if state_record.get("_id") is not None:
         normalized["source_record_id"] = str(state_record["_id"])
@@ -178,11 +174,32 @@ def extract_records(document):
 
 
 # --------------------------------------------------
-# 5. FAST BATCH EXECUTION
+# 5. EXECUTION VIA ID PAGINATION
 # --------------------------------------------------
 
+def flush_batch(collection, operations):
+    """Safely flush operations buffer to MongoDB."""
+    upserted = 0
+    modified = 0
+    if not operations:
+        return upserted, modified
+    try:
+        res = collection.bulk_write(operations, ordered=False)
+        upserted += res.upserted_count
+        modified += res.modified_count
+    except BulkWriteError as bwe:
+        upserted += bwe.details.get("nUpserted", 0)
+        modified += bwe.details.get("nModified", 0)
+    return upserted, modified
+
+
 def main():
-    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=15000)
+    client = MongoClient(
+        MONGO_URI,
+        serverSelectionTimeoutMS=20000,
+        socketTimeoutMS=45000,
+        connectTimeoutMS=20000
+    )
 
     try:
         client.admin.command("ping")
@@ -202,9 +219,9 @@ def main():
         )
 
         total_source_docs = source_collection.count_documents({})
-        print(f"\nStarting batch normalization...")
+        print("\nStarting batch normalization via _id pagination...")
         print(f"Total documents to process: {total_source_docs:,}")
-        print(f"Batch size: {BATCH_SIZE} operations\n")
+        print(f"Fetch size: {FETCH_BATCH_SIZE} | Write batch size: {WRITE_BATCH_SIZE}\n")
 
         total_read = 0
         total_normalized = 0
@@ -212,61 +229,59 @@ def main():
         total_modified = 0
 
         operations = []
+        last_id = None
 
-        # Cursor with batch_size to keep streaming fast
-        cursor = source_collection.find({}, batch_size=500)
+        while True:
+            query = {} if last_id is None else {"_id": {"$gt": last_id}}
+            batch = list(
+                source_collection.find(query)
+                .sort("_id", ASCENDING)
+                .limit(FETCH_BATCH_SIZE)
+            )
 
-        for document in cursor:
-            total_read += 1
+            if not batch:
+                break
 
-            for record in extract_records(document):
-                if record is None:
-                    continue
+            for document in batch:
+                total_read += 1
+                last_id = document["_id"]
 
-                total_normalized += 1
+                for record in extract_records(document):
+                    if record is None:
+                        continue
 
-                filter_query = {
-                    "state": record["state"],
-                    "collected_at": record["collected_at"],
-                    "source": record["source"]
-                }
+                    total_normalized += 1
 
-                operations.append(
-                    UpdateOne(filter_query, {"$set": record}, upsert=True)
-                )
+                    filter_query = {
+                        "state": record["state"],
+                        "collected_at": record["collected_at"],
+                        "source": record["source"]
+                    }
 
-                # Flush batch to MongoDB when limit reached
-                if len(operations) >= BATCH_SIZE:
-                    try:
-                        res = target_collection.bulk_write(operations, ordered=False)
-                        total_upserted += res.upserted_count
-                        total_modified += res.modified_count
-                    except BulkWriteError as bwe:
-                        total_upserted += bwe.details.get("nUpserted", 0)
-                        total_modified += bwe.details.get("nModified", 0)
-                    operations.clear()
+                    operations.append(
+                        UpdateOne(filter_query, {"$set": record}, upsert=True)
+                    )
 
-            # Live progress log every 1,000 documents
-            if total_read % 1000 == 0:
-                print(f"Processed {total_read:,}/{total_source_docs:,} documents | Normalized: {total_normalized:,} records")
+                    if len(operations) >= WRITE_BATCH_SIZE:
+                        u, m = flush_batch(target_collection, operations)
+                        total_upserted += u
+                        total_modified += m
+                        operations.clear()
 
-        # Flush any remaining records
+            print(f"Processed {total_read:,}/{total_source_docs:,} documents | Normalized: {total_normalized:,} records")
+
         if operations:
-            try:
-                res = target_collection.bulk_write(operations, ordered=False)
-                total_upserted += res.upserted_count
-                total_modified += res.modified_count
-            except BulkWriteError as bwe:
-                total_upserted += bwe.details.get("nUpserted", 0)
-                total_modified += bwe.details.get("nModified", 0)
+            u, m = flush_batch(target_collection, operations)
+            total_upserted += u
+            total_modified += m
             operations.clear()
 
         print("\n================ NORMALIZATION COMPLETED ================")
-        print(f"Total clean docs read       : {total_read:,}")
-        print(f"Total state records built   : {total_normalized:,}")
+        print(f"Total clean docs read        : {total_read:,}")
+        print(f"Total state records built    : {total_normalized:,}")
         print(f"New records inserted (upsert): {total_upserted:,}")
-        print(f"Existing records updated    : {total_modified:,}")
-        print(f"Final collection count      : {target_collection.count_documents({}):,}")
+        print(f"Existing records updated     : {total_modified:,}")
+        print(f"Final collection count       : {target_collection.count_documents({}):,}")
         print("=========================================================")
 
     except PyMongoError as error:

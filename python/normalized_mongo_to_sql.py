@@ -76,7 +76,9 @@ def sync_mongo_to_mysql():
                 peak_mw = VALUES(peak_mw),
                 frequency_hz = VALUES(frequency_hz),
                 source_type = VALUES(source_type),
-                source_kind = VALUES(source_kind);
+                source_kind = VALUES(source_kind),
+                timestamp = VALUES(timestamp),
+                source_record_id = VALUES(source_record_id);
         """
 
         total_docs = mongo_col.count_documents({})
